@@ -45,7 +45,7 @@ loan_repayments
 loan_id- primary key, total_rec_prncp, total_rec_int , total_rec_late_fee , installment , last_pymt_amt, last_pymt_d, next_pymnt_d
 
 loan_defaulters
-member_id , delinq_2yrs , delinq_amnt , pub_rec , pub_rec_bankruptcies , inq_last_6mths , total_rec_lste_fee, mths_since_last_delinq, mths_since_last_record
+member_id , delinq_2yrs , delinq_amnt , pub_rec , pub_rec_bankruptcies , inq_last_6mths , total_rec_late_fee, mths_since_last_delinq, mths_since_last_record
 
 REFER DATA DICTIONARY FILE ATTACHED FOR DESCRIPTION OF THE COLUMNS
 
