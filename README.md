@@ -1,27 +1,6 @@
 # LendingClub Project- PySpark
 
-PROBLEM STATEMENT
-====================================
 
-consider one of these financial institutes is your client
-and they send you the data so that our data engineering team can clean it, process it and give it back to be consumed by data analytics team
-
-other way- you work for a consumer finance company which specialises in lending various types of loans to urban customers
-the company has to either approve or deny the loan based on application
-
-data engineering team should clean the data so that the other teams can use the cleaned data and also the data engineering team should calculate the risk score 
-based on which the company can decide whether to approve or deny
-
--> if the applicant is likely to pay the loan, then not approving the loan results in business loss
-
--> if the applicant is not likely to repay the loan, then approving the loan may lead to financial loss to the company
-
-clean
-
-process- calculating risk score (certain rules)
-
-whenever we are doing a personal project, getting datasets is the most difficult one
-==================================================================
 lending club dataset- 1.7GB
 1 file (csv format)
 118 columns
