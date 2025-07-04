@@ -1,30 +1,67 @@
-# LendingClub Project- PySpark
+# 💼 LendingClub Loan Analysis Project (PySpark)
 
+## 📊 Project Overview
+- **Dataset**: LendingClub loan data (CSV format)
+- **Size**: 1.7 GB
+- **Records**: 2+ million
+- **Columns**: 118
+- **Tools Used**: PySpark, HDFS
 
-lending club dataset- 1.7GB
-1 file (csv format)
-118 columns
-2+ million records
+The project required breaking down the raw dataset into multiple logical components to enable modular processing and analysis.
 
-Read the csv file
-project is not done on a single file
-atleast 3-4 files are required to do this project
+---
 
----------------------------------------
-we can create 4 datasets out of it
-and the datasets are mentioned here
+## 🧹 Data Engineering Workflow
 
-customers_data (borrowers details)
-member_id, emp_title, emp_length, home_ownership, annual_inc, addr_state, zip_code, country, grade, sub_grade,verification_status, tot_hi_cred_lim , application_type , annual_inc_joint , verification_status_joint
+### 🔹 Step 1: Dataset Segmentation
+We extracted and curated **4 primary datasets** from the raw file:
 
-loans_data
-loan_id- will be unique , member_id- ideally one member can have many loans, loan_amnt, funded_amnt , term, int_rate, installment, issue_d, loan_status, purpose, title
+| Dataset Name         | Description                                                                 |
+|----------------------|-----------------------------------------------------------------------------|
+| `customers_data`     | Borrower details including income, employment, and credit grade             |
+| `loans_data`         | Loan-level information such as amount, term, interest rate, and status      |
+| `loan_repayments`    | Repayment history including principal, interest, and late fees              |
+| `loan_defaulters`    | Delinquency and bankruptcy indicators for risk profiling                    |
 
-loan_repayments
-loan_id- primary key, total_rec_prncp, total_rec_int , total_rec_late_fee , installment , last_pymt_amt, last_pymt_d, next_pymnt_d
+Additional derived datasets:
+- `loan_defaulters_delinq_csv`
+- `loan_defaulters_records_inq_csv`
 
-loan_defaulters
-member_id , delinq_2yrs , delinq_amnt , pub_rec , pub_rec_bankruptcies , inq_last_6mths , total_rec_late_fee, mths_since_last_delinq, mths_since_last_record
+These were written to the *cleaned* folder after preprocessing.
 
-REFER DATA DICTIONARY FILE ATTACHED FOR DESCRIPTION OF THE COLUMNS
+---
+
+### 🔹 Step 2: Data Quality Handling
+- Identified and isolated **corrupt or malformed records**
+- Moved all bad data to:  
+  📁 /user/itv018355/lendingclubproject/bad
+  _Note: This data is excluded from processing and will be handled by the upstream data team._
+
+---
+
+### 🔹 Step 3: Table Creation
+Created **permanent Hive-compatible tables** on top of the cleaned datasets to enable SQL-based querying and analytics.
+
+---
+
+### 🔹 Step 4: Loan Score Calculation
+Engineered a new metric: **Loan Score**, based on repayment behavior and risk indicators.
+
+- Output stored at:  
+  📁 `/user/itv018355/lendingclubproject/processed/loan_score1`
+
+---
+
+## ✅ Final Output Summary
+
+| Dataset Name                     | Location                                                  |
+|----------------------------------|-----------------------------------------------------------|
+| `customers_data`                 | `/cleaned/customers_data`                                 |
+| `loans_data`                     | `/cleaned/loans_data`                                     |
+| `loan_repayments`               | `/cleaned/loan_repayments`                                |
+| `loan_defaulters`               | `/cleaned/loan_defaulters`                                |
+| `loan_score1` (engineered file) | `/processed/processed/loan_score1`                        |
+| Bad records                      | `/bad` (excluded from processing)                         |
+
+---
 
