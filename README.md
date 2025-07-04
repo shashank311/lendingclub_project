@@ -60,7 +60,7 @@ Engineered a new metric: **Loan Score**, based on repayment behavior and risk in
 | `loans_data`                     | `/cleaned/loans_data`                                     |
 | `loan_repayments`               | `/cleaned/loan_repayments`                                |
 | `loan_defaulters`               | `/cleaned/loan_defaulters`                                |
-| `loan_score1` (engineered file) | `/processed/processed/loan_score1`                        |
+| `loan_score1` (engineered file) | `/processed/loan_score1`                        |
 | Bad records                      | `/bad` (excluded from processing)                         |
 
 ---
